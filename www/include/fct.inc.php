@@ -4,7 +4,6 @@
  
  * @package default
  * @author Cheri Bibi
- * @version    1.0
  */
  /**
  * Teste si un quelconque visiteur est connecté

@@ -9,7 +9,7 @@
           <img src="http://jigsaw.w3.org/css-validator/images/vcss"
                alt="CSS Valide !" />
       </p>
-      <p id="libValidW3c">Cette page est conforme aux standards du Web</p>
+      <span id="version">v<?= $config['version'] ?></span>
     </div>
     <div class="spacer">&nbsp;</div>
    </div>

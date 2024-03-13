@@ -7,6 +7,9 @@ return array(
     'database' => 'gsbfrais',
 
     // Activation du débug. Mettre 0 en production
-    'debug' => 1
+    'debug' => 1,
+
+    // Version
+    'version' => "1.0"
 
 );
