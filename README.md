@@ -4,7 +4,7 @@ Application web de gestion des frais du laboratoire GSB.
 
 ## Déploiement local
 Si pas deja fait, installer mysql sur votre machine
-Executer les scripts **`sql`**dans l'ordre suivant:
+Executer les scripts **`sql`** dans l'ordre suivant:
 - source gsbfrais_bduser.sql
 - source gsbfrais_structure.sql
 - source gsbfrais_data.sql
