@@ -315,4 +315,17 @@ class PdoGsb {
         $cmd->bindValue("mois", $mois);
         $cmd->execute();        
     }
+
+
+    public function hashAllPassword(){
+      $requete = "select id, mdp from Visiteur ";
+      $utilisateurs = $this->monPdo->query($requete);
+      foreach ($utilisateurs as $ligne){
+        echo $ligne['id'] . ' ' . $ligne['mdp'] . ' ' . password_hash($ligne['mdp'], PASSWORD_BCRYPT) . PHP_EOL;
+        $mdphash = password_hash($ligne['mdp'], PASSWORD_BCRYPT);
+        $id = $ligne['id'];
+        /**query("update visiteur, set mdp = :mdphash where id = :id"); */
+      }
+    
+    }
 }
