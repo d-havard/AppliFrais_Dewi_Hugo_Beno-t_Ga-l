@@ -9,6 +9,7 @@
   	<table class="listeLegere">
   	   <caption>Eléments forfaitisés </caption>
         <tr>
+          <th></th>
          <?php
          foreach ( $lesFraisForfait as $unFraisForfait ) {
 			       $libelle = $unFraisForfait['libelle'];
@@ -19,15 +20,27 @@
 		?>
 		    </tr>
         <tr>
+          <th>Numéro</th>
         <?php
           foreach (  $lesFraisForfait as $unFraisForfait  ) {
 				      $quantite = $unFraisForfait['quantite'];
 		?>
+
               <td class="qteForfait"><?php echo $quantite?> </td>
 		 <?php
           }
 		 ?>
-		    </tr>
+        </tr>
+        <tr>
+        <?php
+          foreach ( $lesIdFrais as $unIdFrais ){
+           $montant = $unIdFrais['montant'];
+           ?>
+              
+          <?php
+          }
+		    ?>
+        </tr>
     </table>
   	<table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
@@ -52,7 +65,7 @@
              </tr>
         <?php 
           }?>
-        <p>Montant total hors forfait : <?php echo $montantTotal ?> €</p>
+        <p>Montant total hors forfait : <?php echo $montantTotal ?></p>
 		
     </table>
   </div>
