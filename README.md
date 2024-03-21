@@ -33,3 +33,6 @@ puis servir le dossier **`www`** par un serveur web (apache).
 On veillera à changer le mot de passe de l'utilisateur **`sql`** dans **`ScriptsSQL/gsbfrais_bduser.sql`** et dans le fichier **`config.php`**.
 
 Seul le dossier **`www`** doit être servi par le serveur web.
+
+## Tests réalisés
+Fichiers contenant les [tests réalisés](Test.md)
