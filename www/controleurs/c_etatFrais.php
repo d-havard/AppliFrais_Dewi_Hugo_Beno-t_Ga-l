@@ -32,7 +32,12 @@ else  { // accès autorisé
     		$numAnnee =substr( $leMois,0,4);
     		$numMois =substr( $leMois,4,2);
     		$libEtat = $lesInfosFicheFrais['libEtat'];
-    		$montantValide = $lesInfosFicheFrais['montantValide'];
+			if ($lesInfosFicheFrais['montantValide'] == 0){ //verification si le montant validé est nul
+				$montantValide = "Non renseigné";
+			}
+			else{
+				$montantValide = $lesInfosFicheFrais['montantValide'];
+			}
     		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     		$dateModif =  $lesInfosFicheFrais['dateModif'];
     		$dateModif =  dateAnglaisVersFrancais($dateModif);
