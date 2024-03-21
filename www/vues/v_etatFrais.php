@@ -37,11 +37,13 @@
                 <th class="libelle">Libellé</th>
                 <th class='montant'>Montant</th>                
              </tr>
-        <?php      
+        <?php
+          $montantTotal = 0;     
           foreach ( $lesFraisHorsForfait as $unFraisHorsForfait ) {
       			 $date = $unFraisHorsForfait['date'];
 			       $libelle = $unFraisHorsForfait['libelle'];
 			       $montant = $unFraisHorsForfait['montant'];
+             $montantTotal += $unFraisHorsForfait['montant'];
 		?>
              <tr>
                 <td><?php echo $date ?></td>
@@ -49,8 +51,9 @@
                 <td><?php echo $montant ?></td>
              </tr>
         <?php 
-          }
-		?>
+          }?>
+        <p>Montant total hors forfait : <?php echo $montantTotal ?> €</p>
+		
     </table>
   </div>
   </div>
