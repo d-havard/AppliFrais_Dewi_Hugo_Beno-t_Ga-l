@@ -42,6 +42,13 @@ else  { // accès autorisé
     		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     		$dateModif =  $lesInfosFicheFrais['dateModif'];
     		$dateModif =  dateAnglaisVersFrancais($dateModif);
+			$forfaitTotal = [];
+			$totalfrais = 0;
+			for ($i=0; $i< 4; $i++){
+				$total = $lesFraisForfait[$i]['quantite'] * $LesIdFrais[$i]['montant'];
+				$forfaitTotal[$i] += $total;
+				$totalfrais += $total;
+			}
     		include("vues/v_etatFrais.php");    	
     }
 }

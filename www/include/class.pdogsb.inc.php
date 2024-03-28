@@ -113,7 +113,7 @@ class PdoGsb {
    * @return un tableau associatif 
   */
     public function getLesIdFrais(){
-  	    $req = "select id as idFrais from FraisForfait order by id";
+  	    $req = "select id as idFrais, montant from FraisForfait order by id";
   	    $cmd = $this->monPdo->prepare($req);
         $cmd->execute();
   	    $lesLignes = $cmd->fetchAll();

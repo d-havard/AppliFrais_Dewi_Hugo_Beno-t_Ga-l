@@ -32,15 +32,22 @@
 		 ?>
         </tr>
         <tr>
+          <th>Montant Unité</th>
         <?php
-          foreach ( $lesIdFrais as $unIdFrais ){
+          foreach ( $LesIdFrais as $unIdFrais ){
            $montant = $unIdFrais['montant'];
            ?>
-              
+              <td class="montantForfait"><?php echo $montant?> </td>
           <?php
           }
 		    ?>
         </tr>
+        <tr>
+          <th>Frais Total</th>
+          <?php
+            for($i=0; $i < 4; $i++){?>
+              <td class="fraisTotal"><?php echo $forfaitTotal[$i]?></td>
+            <?php } ?>
     </table>
   	<table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
@@ -66,7 +73,9 @@
         <?php 
           }?>
         <p>Montant total hors forfait : <?php echo $montantTotal ?></p>
-		
+        <?php $totalfrais += $montantTotal ?>
+        <p>Montant total des frais : <?php echo $totalfrais ?></p>
     </table>
+
   </div>
   </div>
