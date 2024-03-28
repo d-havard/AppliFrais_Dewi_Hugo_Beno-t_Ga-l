@@ -40,5 +40,6 @@ switch($uc){
     break; 
 	
 }
+
 include("vues/v_finContenu.php") ;
 include("vues/v_pied.php") ;
