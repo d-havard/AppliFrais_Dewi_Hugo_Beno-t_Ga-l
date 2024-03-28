@@ -46,6 +46,37 @@ else  { // accès autorisé
   }
   $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
   $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
+	$targetfolder = "testupload/";
+
+	$targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
+
+	$ok=1;
+
+	$file_type=$_FILES['file']['type'];
+
+	if ($file_type=="application/pdf") {
+
+		if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder))
+
+		{
+
+			echo "The file ". basename( $_FILES['file']['name']). " is uploaded";
+
+		}
+
+		else {
+
+			ajouterErreur("Problème durant l'envoie du fichier", $tabErreurs);
+
+		}
+
+		}
+
+	else {
+
+		ajouterErreur("Tu peux seulement envoyer des fichiers .pdf", $tabErreurs);
+
+	}
   include("vues/v_erreurs.php");
   include("vues/v_listeFraisForfait.php");
   include("vues/v_listeFraisHorsForfait.php");

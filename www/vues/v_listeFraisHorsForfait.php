@@ -49,6 +49,12 @@
               <input type="text" id="txtMontantHF" name="montant" size="10" maxlength="10" value="" />
             </p>
           </fieldset>
+          <form action="upload_file.php" method="post" enctype="multipart/form-data">
+
+          <input type="file" name="file" size="50" />
+          <input type="submit" value="Upload" />
+
+          </form>
       </div>
       <div class="piedForm">
       <p>
