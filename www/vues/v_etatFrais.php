@@ -71,11 +71,7 @@
                 <td><?php echo $montant ?></td>
              </tr>
         <?php 
-          }?>
-        
-        
-        
-        
+          }?>   
     </table>
     <p>Montant total hors forfait : <?php echo $montantTotal ?> €</p>
     <?php $totalfrais += $montantTotal ?>
