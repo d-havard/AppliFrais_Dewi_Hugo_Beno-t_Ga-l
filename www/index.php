@@ -29,6 +29,10 @@ switch($uc){
 	case 'gererFrais' :
 		include("controleurs/c_gererFrais.php");
     break;
+
+  case 'envoiePDF' :
+    include("../upload_php_file.php");
+    break;
 	
 	default :
     if ( $estConnecte ) {

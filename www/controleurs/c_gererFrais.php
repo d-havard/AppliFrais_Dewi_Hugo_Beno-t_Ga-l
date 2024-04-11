@@ -46,7 +46,9 @@ else  { // accès autorisé
   }
   $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
   $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
-  $targetfolder = "testupload/";
+  
+ 
+  $targetfolder = "C:\\xampp\htdocs\AppliFrais\PDF_storage\\";
 
   $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
 
@@ -54,30 +56,13 @@ else  { // accès autorisé
 
   $file_type=$_FILES['file']['type'];
 
-  if ($file_type=="application/pdf") {
 
-	  if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder))
-
-	  {
-
-		  echo "The file ". basename( $_FILES['file']['name']). " is uploaded";
-
-	  }
-
-	  else {
-
-		  ajouterErreur("Problème durant l'envoie du fichier", $tabErreurs);
-
-	  }
-
-	  }
-
-  else {
-
-	  ajouterErreur("Tu peux seulement envoyer des fichiers .pdf", $tabErreurs);
-
-  }                        
-
+  if (file_exists($_FILES["file"]["name"])){
+	echo "<h3>The file already exists</h3>";
+  } else {
+	move_uploaded_file($_FILES["file"]["tmp_name"], $targetfolder);
+	echo "<h3>File Successfully Uploaded</h3>";
+  }
   include("vues/v_erreurs.php");
   include("vues/v_listeFraisForfait.php");
   include("vues/v_listeFraisHorsForfait.php");

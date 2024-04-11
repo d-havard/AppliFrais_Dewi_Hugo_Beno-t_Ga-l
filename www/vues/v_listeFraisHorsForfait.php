@@ -49,19 +49,19 @@
               <input type="text" id="txtMontantHF" name="montant" size="10" maxlength="10" value="" />
             </p>
           </fieldset>
-          <form action="upload_file.php" method="post" enctype="multipart/form-data">
-
-          <input type="file" name="file" size="50" />
-          <input type="submit" value="Upload" />
-
-          </form>
+          
       </div>
       <div class="piedForm">
       <p>
         <input id="ajouter" type="submit" value="Ajouter" size="20" />
         <input id="effacer" type="reset" value="Effacer" size="20" />
       </p> 
+      </form>
       </div>
-        
+      <form action="index.php?uc=gererFrais&amp;action=validerCreationFrais" method="post" enctype="multipart/form-data">
+
+      <input type="file" name="file" size="50" />
+      <input type="submit" value="Upload" />
+
       </form>
   </div>
