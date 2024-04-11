@@ -29,13 +29,26 @@ else  { // accès autorisé
     		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$leMois);
     		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$leMois);
     		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois);
-    		$numAnnee =substr( $leMois,0,4);
+    		$LesIdFrais = $pdo->getLesIdFrais();
+			$numAnnee =substr( $leMois,0,4);
     		$numMois =substr( $leMois,4,2);
     		$libEtat = $lesInfosFicheFrais['libEtat'];
-    		$montantValide = $lesInfosFicheFrais['montantValide'];
+			if ($lesInfosFicheFrais['montantValide'] == 0){ //verification si le montant validé est nul
+				$montantValide = "Non renseigné";
+			}
+			else{
+				$montantValide = $lesInfosFicheFrais['montantValide'];
+			}
     		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     		$dateModif =  $lesInfosFicheFrais['dateModif'];
     		$dateModif =  dateAnglaisVersFrancais($dateModif);
+			$forfaitTotal = [];
+			$totalfrais = 0;
+			for ($i=0; $i< 4; $i++){
+				$total = $lesFraisForfait[$i]['quantite'] * $LesIdFrais[$i]['montant'];
+				$forfaitTotal[$i] += $total;
+				$totalfrais += $total;
+			}
     		include("vues/v_etatFrais.php");    	
     }
 }

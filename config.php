@@ -10,6 +10,5 @@ return array(
     'debug' => 1,
 
     // Version
-    'version' => "1.0.1"
-
+    'version' => "1.0.2"
 );
