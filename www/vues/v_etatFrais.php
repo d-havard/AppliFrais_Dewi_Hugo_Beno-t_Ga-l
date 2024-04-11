@@ -72,10 +72,14 @@
              </tr>
         <?php 
           }?>
-        <p>Montant total hors forfait : <?php echo $montantTotal ?></p>
-        <?php $totalfrais += $montantTotal ?>
-        <p>Montant total des frais : <?php echo $totalfrais ?></p>
+        
+        
+        
+        
     </table>
+    <p>Montant total hors forfait : <?php echo $montantTotal ?> €</p>
+    <?php $totalfrais += $montantTotal ?>
+    <p>Montant total des frais (hors forfait + forfait) : <?php echo $totalfrais ?> €</p>
 
   </div>
   </div>
