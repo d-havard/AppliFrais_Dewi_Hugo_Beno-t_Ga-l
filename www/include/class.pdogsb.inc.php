@@ -28,18 +28,34 @@ class PdoGsb {
     public function _destruct(){
         $this->monPdo = null;
     }
+
+    /**
+     * Retourne le hash du mot de passe du visiteur qui veut se connecter
+     * 
+     * @param string login
+     * @return string le mdp hash du visiteur
+     */
+    public function getHash($login){
+      $req = "select mdp from Visiteur
+              WHERE login = ?";
+      $cmd = $this->monPdo->prepare($req);
+      $cmd->bindValue(1, $login);
+      $cmd->execute();
+      $mdpVisiteur = $cmd->fetch();
+      return $mdpVisiteur[0];
+    }
+
   /**
    * Retourne les informations d'un visiteur
    
    * @param string  login 
-   * @param string  mot de passe
-   * @return array  l'id, le nom et le prénom sous la forme d'un tableau associatif 
+   *    * @return array  l'id, le nom et le prénom sous la forme d'un tableau associatif 
   */
-    public function getInfosVisiteur($login, $mdp){
-  	    $req = "select id, nom, prenom from Visiteur where login = ? and mdp = ?";
+    public function getInfosVisiteur($login){
+
+  	    $req = "select id, nom, prenom from Visiteur where login = ?";
   	    $cmd = $this->monPdo->prepare($req);
         $cmd->bindValue(1, $login);
-        $cmd->bindValue(2, $mdp);
         $cmd->execute();
   	    $ligne = $cmd->fetch();
   	    return $ligne;
@@ -315,4 +331,31 @@ class PdoGsb {
         $cmd->bindValue("mois", $mois);
         $cmd->execute();        
     }
+
+    /**
+     * Modifie tout les mots de passe pour les hasher
+     * avec la fonction de haschage BCRYPT car argon2ID n'est pas initialisé
+     * sur la majorité des machines.
+     * 
+     * A n'utilisé qu'une fois
+     *  
+     */
+    public function hashAllPassword()
+    {
+      $requete = "select id, mdp from Visiteur ";
+      $utilisateurs = $this->monPdo->query($requete);
+      foreach ($utilisateurs as $ligne){
+        echo $ligne['id'] . ' ' . $ligne['mdp'] . ' ' . password_hash($ligne['mdp'], PASSWORD_BCRYPT) . PHP_EOL;
+        $mdphash = password_hash($ligne['mdp'], PASSWORD_BCRYPT);
+        $id = $ligne['id'];
+        $req = "update visiteur
+                set mdp = :mdphash 
+                where id = :id";
+        $cmd = $this->monPdo->prepare($req);
+        $cmd->bindValue("mdphash", $mdphash);
+        $cmd->bindValue("id", $ligne['id']);
+        $cmd->execute();
+        
+      }
+    }    
 }

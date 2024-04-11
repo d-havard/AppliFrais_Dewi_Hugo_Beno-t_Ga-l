@@ -11,5 +11,4 @@ return array(
 
     // Version
     'version' => "1.0.2"
-
 );
