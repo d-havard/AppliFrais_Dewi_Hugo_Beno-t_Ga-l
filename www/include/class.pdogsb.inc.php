@@ -357,5 +357,20 @@ class PdoGsb {
         $cmd->execute();
         
       }
-    }    
+    }
+    public function createLigneForPDF($nom, $localisation, $idVisiteur)
+    {
+      $requete = "insert into fichierspdflocalisation (nom, localisation, idVisiteur) values('" . $nom ."', '" . $localisation . "', '" . $idVisiteur ."')";
+      $cmd ->execute();
+    }
+
+    public function getIdVisiteur($login){
+
+      $req = "select id from Visiteur where login = ?";
+      $cmd = $this->monPdo->prepare($req);
+      $cmd->bindValue(1, $login);
+      $cmd->execute();
+      $ligne = $cmd->fetch();
+      return $ligne;
+  } 
 }

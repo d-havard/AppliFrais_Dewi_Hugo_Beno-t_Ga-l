@@ -56,7 +56,7 @@ else  { // accès autorisé
 
   $file_type=$_FILES['file']['type'];
 
-  if ($file_type == "application/pdf")
+  if ($file_type == "application/pdf" && $_FILES["file"]["size"] < 10000000) //si le fichier est un pdf et est inférieur a 10 Mo
   {
     if (file_exists($_FILES["file"]["name"])){
         echo "<h3>The file already exists</h3>";
@@ -64,14 +64,17 @@ else  { // accès autorisé
     else {
       move_uploaded_file($_FILES["file"]["tmp_name"], $targetfolder);
       echo "<h3>File Successfully Uploaded</h3>";
+      $pdo->createLigneForPDF($_FILES["file"]["name"], "C:\\xampp\htdocs\AppliFrais\PDF_storage\\", $idVisiteur);
     }
   }
   else
   {
-    ajouterErreur("Le fichier doit être un PDF", $tabErreurs);
+    ajouterErreur("Le fichier doit être un PDF et/ou dépasse les 10Mo", $tabErreurs);
   }
   include("vues/v_erreurs.php");
   include("vues/v_listeFraisForfait.php");
   include("vues/v_listeFraisHorsForfait.php");
 }
 ?>
+
+<h3><?php file_exists($_FILES["file"]["name"]) ?></h3>

@@ -4,7 +4,7 @@ return array(
     'host' => 'localhost',
     'user' => 'userGsb',
     'password' => 'secret', // Changez le mot de passe en production
-    'database' => 'gsbfrais',
+    'database' => 'gsbfraisbeta',
 
     // Activation du débug. Mettre 0 en production
     'debug' => 1,

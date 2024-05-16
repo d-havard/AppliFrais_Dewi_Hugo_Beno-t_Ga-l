@@ -5,7 +5,7 @@
 -- L'option ENGINE=InnoDB en fin de création de table a été supprimée, 
 -- cette option étant celle par défaut à partir de MySql 5
 --
- use gsbfrais;
+ use gsbfraisbeta;
 -- --------------------------------------------------------
 
 --
@@ -97,6 +97,25 @@ CREATE TABLE  LigneFraisHorsForfait (
   montant decimal(10,2) DEFAULT NULL,
   constraint pkLigneFraisHorsForfait PRIMARY KEY (id)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table des fichiers PDF associer a l'utilisateur
+--
+
+CREATE TABLE FichiersPDFLocalisation(
+  id int NOT NULL auto_increment,
+  nom char(100) NOT NULL,
+  localisation char(200) NOT NULL,
+  idVisiteur char(4) NOT NULL,
+  constraint pkFichiersPDFLocalisation PRIMARY KEY (id),
+  constraint fk_Visiteur_FichiersPDFLocalisation FOREIGN KEY (idVisiteur) references Visiteur(id)
+);
+
+
+
+
 
 --
 -- Déclaration des contraintes d'intégrité référentielle
