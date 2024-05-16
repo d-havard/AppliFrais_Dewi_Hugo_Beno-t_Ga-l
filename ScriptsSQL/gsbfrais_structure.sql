@@ -5,7 +5,7 @@
 -- L'option ENGINE=InnoDB en fin de création de table a été supprimée, 
 -- cette option étant celle par défaut à partir de MySql 5
 --
- use gsbfrais;
+ use gsbfraisbeta;
 -- --------------------------------------------------------
 
 --
