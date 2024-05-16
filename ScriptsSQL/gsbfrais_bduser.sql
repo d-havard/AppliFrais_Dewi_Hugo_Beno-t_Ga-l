@@ -6,5 +6,5 @@ CREATE DATABASE IF NOT EXISTS `gsbfraisbeta`
 -- création d'un login et affectation à ce login de tous les droits sur la base 
 -- de données GenDongsbfraisnees
 
-CREATE USER userGsb@'localhost' IDENTIFIED BY 'secret';
-GRANT ALL ON gsbfraisbeta.* TO userGsb@'localhost' ;
+CREATE USER userGsbBeta@'localhost' IDENTIFIED BY 'secret';
+GRANT ALL ON gsbfraisbeta.* TO userGsbBeta@'localhost' ;
