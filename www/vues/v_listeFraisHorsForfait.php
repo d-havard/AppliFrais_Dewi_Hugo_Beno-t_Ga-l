@@ -60,7 +60,7 @@
       </div>
       <form action="index.php?uc=gererFrais&amp;action=validerCreationFrais" method="post" enctype="multipart/form-data">
 
-      <input type="file" name="file" size="50" />
+      <input type="file" accept=".pdf" name="file" size="50" />
       <input type="submit" value="Upload" />
 
       </form>

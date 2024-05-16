@@ -56,15 +56,22 @@ else  { // accès autorisé
 
   $file_type=$_FILES['file']['type'];
 
-
-  if (file_exists($_FILES["file"]["name"])){
-	echo "<h3>The file already exists</h3>";
-  } else {
-	move_uploaded_file($_FILES["file"]["tmp_name"], $targetfolder);
-	echo "<h3>File Successfully Uploaded</h3>";
+  if ($file_type == "application/pdf")
+  {
+    if (file_exists($_FILES["file"]["name"])){
+        echo "<h3>The file already exists</h3>";
+    } 
+    else {
+      move_uploaded_file($_FILES["file"]["tmp_name"], $targetfolder);
+      echo "<h3>File Successfully Uploaded</h3>";
+    }
+  }
+  else
+  {
+    ajouterErreur("Le fichier doit être un PDF", $tabErreurs);
   }
   include("vues/v_erreurs.php");
   include("vues/v_listeFraisForfait.php");
   include("vues/v_listeFraisHorsForfait.php");
-}  
+}
 ?>
