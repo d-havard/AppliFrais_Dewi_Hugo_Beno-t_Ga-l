@@ -348,7 +348,7 @@ class PdoGsb {
         echo $ligne['id'] . ' ' . $ligne['mdp'] . ' ' . password_hash($ligne['mdp'], PASSWORD_BCRYPT) . PHP_EOL;
         $mdphash = password_hash($ligne['mdp'], PASSWORD_BCRYPT);
         $id = $ligne['id'];
-        $req = "update visiteur
+        $req = "update Visiteur
                 set mdp = :mdphash 
                 where id = :id";
         $cmd = $this->monPdo->prepare($req);
